@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Configures the Camel Context -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:camel="http://camel.apache.org/schema/spring"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+     
+    <bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location">
+			<value>classpath:salesforceconfig.properties</value>
+		</property>
+	</bean>
+     
+     <!--
+    <bean
+        class="org.apache.camel.component.properties.PropertiesComponent" id="properties">
+        <property name="location" value="classpath:salesforceconfig.properties"/>
+    </bean>
+    
+    <bean
+        class="org.apache.camel.component.salesforce.SalesforceComponent" id="salesforce">
+        <property name="loginConfig">
+            <bean class="org.apache.camel.component.salesforce.SalesforceLoginConfig">
+                <property name="loginUrl" value="{{loginUrl}}"/>
+                <property name="userName" value="{{userName}}"/>
+                <property name="password" value="{{password}}"/>
+                <property name="clientId" value="{{clientId}}"/>
+                <property name="clientSecret" value="{{clientSecret}}"/>
+            </bean>
+        </property>
+        <property name="config">
+            <bean class="org.apache.camel.component.salesforce.SalesforceEndpointConfig">
+                <property name="sObjectName" value="{{sObjectName}}"/>
+                <property name="sObjectClass" value="{{sObjectClass}}"/>
+            </bean>
+        </property>
+        <property name="packages" value="{{sObjectDTOPackages}}"/>
+    </bean>
+    -->
+    
+    <bean
+        class="org.apache.camel.component.salesforce.SalesforceComponent" id="salesforce">
+        <property name="loginConfig">
+            <bean class="org.apache.camel.component.salesforce.SalesforceLoginConfig">
+                <property name="loginUrl" value="${loginUrl}"/>
+                <property name="userName" value="${userName}"/>
+                <property name="password" value="${password}"/>
+                <property name="clientId" value="${clientId}"/>
+                <property name="clientSecret" value="${clientSecret}"/>
+            </bean>
+        </property>
+        <property name="config">
+            <bean class="org.apache.camel.component.salesforce.SalesforceEndpointConfig">
+                <property name="sObjectName" value="${sObjectName}"/>
+                <property name="sObjectClass" value="${sObjectClass}"/>
+            </bean>
+        </property>
+        <property name="packages" value="${sObjectDTOPackages}"/>
+    </bean>
+     
+    <camelContext id="camelContext-d72761c3-1e3e-4d53-ac43-51f11b4e5816" xmlns="http://camel.apache.org/schema/spring">
+        <route id="sfRoute">
+            <from id="_from1" uri="timer://foo?fixedRate=true&amp;period=900000"/>
+            <to id="_to1" uri="salesforce:query?sObjectQuery=SELECT Name FROM Account&amp;sObjectClass=org.apache.camel.salesforce.dto.QueryRecordsAccount"/>
+            <convertBodyTo id="_convertBodyTo1" type="java.lang.String"/>
+            <log id="_log1" message="Query result back from Salesforce: ${body}"/>
+            <to id="_to2" uri="file://target/?fileName=sfdc_out.txt"/>
+        </route>
+    </camelContext>
+</beans>

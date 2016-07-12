@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1468292276751
+Build-Jdk: 1.8.0_65
+Built-By: dhumphri
+Bundle-ManifestVersion: 2
+Bundle-Name: A Camel Spring Route
+Bundle-SymbolicName: org.apache.camel.archetypes.camel-SFDC-demo
+Bundle-Version: 2.15.1.redhat-621084
+Created-By: Apache Maven Bundle Plugin
+Export-Package: org.apache.camel.salesforce.dto;uses:="org.joda.time,com
+ .thoughtworks.xstream.annotations,org.apache.camel.component.salesforce
+ .api.dto,org.codehaus.jackson.annotate,org.apache.camel.component.sales
+ force.api,org.codehaus.jackson.map.annotate";version="2.15.1.redhat-621
+ 084"
+Import-Package: com.thoughtworks.xstream.annotations;version="[1.4,2)",o
+ rg.apache.camel.component.salesforce;version="[2.15,3)",org.apache.came
+ l.component.salesforce.api;version="[2.15,3)",org.apache.camel.componen
+ t.salesforce.api.dto;version="[2.15,3)",org.codehaus.jackson.annotate;v
+ ersion="[1.9,2)",org.codehaus.jackson.map.annotate;version="[1.9,2)",or
+ g.joda.time;version="[2.5,3)",org.springframework.beans.factory.config
+Tool: Bnd-1.50.0
