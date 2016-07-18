@@ -11,32 +11,7 @@
 		</property>
 	</bean>
      
-     <!--
-    <bean
-        class="org.apache.camel.component.properties.PropertiesComponent" id="properties">
-        <property name="location" value="classpath:salesforceconfig.properties"/>
-    </bean>
-    
-    <bean
-        class="org.apache.camel.component.salesforce.SalesforceComponent" id="salesforce">
-        <property name="loginConfig">
-            <bean class="org.apache.camel.component.salesforce.SalesforceLoginConfig">
-                <property name="loginUrl" value="{{loginUrl}}"/>
-                <property name="userName" value="{{userName}}"/>
-                <property name="password" value="{{password}}"/>
-                <property name="clientId" value="{{clientId}}"/>
-                <property name="clientSecret" value="{{clientSecret}}"/>
-            </bean>
-        </property>
-        <property name="config">
-            <bean class="org.apache.camel.component.salesforce.SalesforceEndpointConfig">
-                <property name="sObjectName" value="{{sObjectName}}"/>
-                <property name="sObjectClass" value="{{sObjectClass}}"/>
-            </bean>
-        </property>
-        <property name="packages" value="{{sObjectDTOPackages}}"/>
-    </bean>
-    -->
+     
     
     <bean
         class="org.apache.camel.component.salesforce.SalesforceComponent" id="salesforce">
