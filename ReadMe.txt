@@ -1,4 +1,4 @@
-This project has been created to just demo JBoss Fuse Integration with Salesforce.com.
+This project has been created to demo JBoss Fuse Integration with Salesforce.com.
 
 This demo was tested using JBoss Fuse 6.2.1 karaf container.
 
