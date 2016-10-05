@@ -35,7 +35,7 @@
      
     <camelContext id="camelContext-d72761c3-1e3e-4d53-ac43-51f11b4e5816" xmlns="http://camel.apache.org/schema/spring">
         <route id="sfRoute">
-            <from id="_from1" uri="timer://foo?fixedRate=true&amp;period=900000"/>
+            <from id="_from1" uri="timer://foo?fixedRate=true&amp;period=800000"/>
             <to id="_to1" uri="salesforce:query?sObjectQuery=SELECT Name FROM Account&amp;sObjectClass=org.apache.camel.salesforce.dto.QueryRecordsAccount"/>
             <convertBodyTo id="_convertBodyTo1" type="java.lang.String"/>
             <log id="_log1" message="Query result back from Salesforce: ${body}"/>
